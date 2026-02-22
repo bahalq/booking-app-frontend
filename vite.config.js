@@ -5,7 +5,7 @@ import tailwindcss from "@tailwindcss/vite";
 // https://vite.dev/config/
 export default defineConfig({
   server : {
-    allowedHosts : ['41240f34f5c0.ngrok-free.app']
+    allowedHosts : ['booking-app.unaux.com']
   },
   plugins: [
     tailwindcss(),
