@@ -1,1 +1,1 @@
-export const API_BASE_URL = "booking-app.unaux.com";
+export const API_BASE_URL = "https://booking-app.unaux.com";
