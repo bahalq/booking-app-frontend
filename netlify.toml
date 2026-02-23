@@ -1,8 +1,8 @@
 [[redirects]]
   from = "/api/*"
-  to = "https://booking-app.unaux.com/:splat"
+  to = "https://backend-booking-app-production-6b3a.up.railway.app/:splat"
   status = 200
   force = true
   [redirects.headers]
     User-Agent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-    Referer = "https://booking-app.unaux.com/"
+    Referer = "https://backend-booking-app-production-6b3a.up.railway.app/"
