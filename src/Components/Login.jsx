@@ -23,7 +23,7 @@ export default function Login({ setIslogin, setRole }) {
 
     try {
       const res = await fetch(
-        "http://localhost/booking-app/backend/connection.php",
+        "https://bookmypitch.netlify.app/api/connection.php",
         {
           method: "POST",
           body: formData,
