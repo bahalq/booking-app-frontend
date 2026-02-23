@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export default function Signup() {
   const { t, i18n } = useTranslation();
   const [dir, setDir] = useState("ltr");
+  const navigate = useNavigate()
   useEffect(() => {
     console.log(t.language);
 
@@ -83,7 +85,7 @@ export default function Signup() {
     import("../services/api").then(({ api }) => {
       api.register(payload).then((data) => {
         if (data.success) {
-          window.location.href = "/login";
+          navigate('/login')
         } else if (data.message === "Email already exists") {
           setErr({ msg: t("emailExists"), rules: "", bool: true });
         } else {
