@@ -5,7 +5,7 @@ const API_BASE = API_BASE_URL;
 // Helper for fetch with credentials
 const fetchAPI = async (endpoint, options = {}) => {
   const defaultHeaders = {
-    // "Content-Type": "application/json", // Move this logic
+    "Content-Type": "application/json", // Move this logic
   };
 
   if (!(options.body instanceof FormData)) {
@@ -14,7 +14,7 @@ const fetchAPI = async (endpoint, options = {}) => {
 
   const config = {
     ...options,
-    credentials: "include",
+    credentials: "same-origin",
     headers: {
       ...defaultHeaders,
       ...options.headers,
