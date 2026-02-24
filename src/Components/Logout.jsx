@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
+import { API_BASE_URL } from "../config/api";
 
 export default function Logout({ setIslogin, setRole, menuOpen }) {
   const handleLogout = async () => {
-    await fetch("http://localhost/booking-app/backend/logout.php", {
+    await fetch(`${API_BASE_URL}/logout.php`, {
       method: "POST",
       credentials: "include",
     });
