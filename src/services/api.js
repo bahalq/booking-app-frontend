@@ -4,28 +4,38 @@ const API_BASE = API_BASE_URL;
 
 // Helper for fetch with credentials
 const fetchAPI = async (endpoint, options = {}) => {
-  const defaultHeaders = {
-    "Content-Type": "application/json", // Move this logic
-  };
+  // 1. Khalli l-headers khawyin f l-bdya
+  const headers = { ...options.headers };
 
+  // 2. Ila kant l-body machi FormData, zid "application/json"
+  // Ila kant FormData, Mat-dirch Content-Type ga3! (L-browser ghadi i-tkellef)
   if (!(options.body instanceof FormData)) {
-    defaultHeaders["Content-Type"] = "application/json";
+    headers["Content-Type"] = "application/json";
   }
 
   const config = {
     ...options,
-    credentials: "same-origin",
-    headers: {
-      ...defaultHeaders,
-      ...options.headers,
-    },
+    credentials: "include", // "include" a7san mn "same-origin" ila kanti m-hosti f domains mukhtalifa
+    headers: headers, // Sta3mel l-headers li qaddina
   };
 
-  const response = await fetch(`${API_BASE}/${endpoint}`, config);
-  const data = await response.json();
-  return data;
+  try {
+    const response = await fetch(`${API_BASE}/${endpoint}`, config);
+    
+    // Check ila l-response machi JSON (bach t-fada error dyal parsing)
+    const contentType = response.headers.get("content-type");
+    if (contentType && contentType.includes("application/json")) {
+      return await response.json();
+    }
+    
+    const text = await response.text();
+    return { success: false, error: "Server returned non-JSON response", details: text };
+    
+  } catch (error) {
+    console.error("Fetch error:", error);
+    return { success: false, error: "Network error" };
+  }
 };
-
 export const api = {
   // Auth
   login: (creds) =>
