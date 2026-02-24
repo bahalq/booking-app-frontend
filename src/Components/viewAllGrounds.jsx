@@ -40,7 +40,7 @@ export default function ViewGrounds() {
       // Since deleteGround.php is checked earlier, we should add it to api.js or call fetch directly with correct URL.
       // Ideally update api.js, but for now fixed URL:
       const res = await fetch(
-        `https://backend-booking-app-production-6b3a.up.railway.app/add_ground.php?id=${id}`,
+        `https://backend-booking-app-production-6b3a.up.railway.app/deleteGround.php?id=${id}`,
         {
           method: "DELETE",
           credentials: "include",
