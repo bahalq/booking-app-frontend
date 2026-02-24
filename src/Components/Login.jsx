@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { LuEyeClosed, LuEye } from "react-icons/lu";
+import { API_BASE_URL } from "../config/api";
 
 export default function Login({ setIslogin, setRole }) {
   const { t } = useTranslation();
@@ -23,7 +24,7 @@ export default function Login({ setIslogin, setRole }) {
 
     try {
       const res = await fetch(
-        "https://bookmypitch.netlify.app/api/connection.php",
+        `${API_BASE_URL}/api/connection.php`,
         {
           method: "POST",
           body: formData,
