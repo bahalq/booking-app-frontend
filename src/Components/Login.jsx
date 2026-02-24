@@ -24,7 +24,7 @@ export default function Login({ setIslogin, setRole }) {
 
     try {
       const res = await fetch(
-        `${API_BASE_URL}/api/connection.php`,
+        `${API_BASE_URL}/connection.php`,
         {
           method: "POST",
           body: formData,
