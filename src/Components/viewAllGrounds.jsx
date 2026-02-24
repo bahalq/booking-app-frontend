@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ImageCarousel from "./ImageCarousel";
 import { api } from "../services/api"; // Updated to use centralized API
+import { API_BASE_URL } from "../config/api";
+
 
 export default function ViewGrounds() {
   const { t } = useTranslation();
@@ -40,7 +42,7 @@ export default function ViewGrounds() {
       // Since deleteGround.php is checked earlier, we should add it to api.js or call fetch directly with correct URL.
       // Ideally update api.js, but for now fixed URL:
       const res = await fetch(
-        `https://backend-booking-app-production-6b3a.up.railway.app/deleteGround.php?id=${id}`,
+        `${API_BASE_URL}/deleteGround.php?id=${id}`,
         {
           method: "DELETE",
           credentials: "include",
